@@ -6,22 +6,22 @@ This module is designed to be hooked up on both the client and server.
 On the server, inside `worker.js`, you should use:
 
 ```js
-var scCodecBinMin = require('sc-codec-bin-min');
+var scCodecMinBin = require('sc-codec-min-bin');
 
 // ...
 // This needs to go inside the run function - Near the top.
-worker.scServer.setCodecEngine(scCodecBinMin);
+worker.scServer.setCodecEngine(scCodecMinBin);
 ```
 
-On the client-side, you can either include the 'sc-codec-bin-min' module using
-your favorite bundler such as Browserify or Webpack or you can include the `sc-codec-bin-min.js`
-file using a script tag; this will expose the `scCodecBinMin` object globally.
+On the client-side, you can either include the 'sc-codec-min-bin' module using
+your favorite bundler such as Browserify or Webpack or you can include the `sc-codec-min-bin.js`
+file using a script tag; this will expose the `scCodecMinBin` object globally.
 To use it, you just need to add it on connect:
 
 ```js
 var socket = socketCluster.connect({
   // ...
-  codecEngine: scCodecBinMin
+  codecEngine: scCodecMinBin
 });
 ```
 
@@ -32,4 +32,4 @@ Note that you need to set it up properly on both the client and server or else i
 ## Contributing
 
 To build global script for browser:
-browserify -s scCodecBinMin index.js > sc-codec-bin-min.js
+browserify -s scCodecMinBin index.js > sc-codec-min-bin.js
