@@ -7,7 +7,7 @@ On the server, inside `worker.js`, you should use:
 
 ```js
 var scCodecBinMin = require('sc-codec-bin-min');
-wroker.scServer.setCodecEngine(scCodecBinMin);
+worker.scServer.setCodecEngine(scCodecBinMin);
 ```
 
 On the client-side, you can either include the 'sc-codec-bin-min' module using
