@@ -3,6 +3,12 @@ Minimal binary codec for SC based on MessagePack.
 
 This module is designed to be hooked up on both the client and server.
 
+To install, use:
+
+```bash
+npm install sc-codec-min-bin
+```
+
 On the server, inside `worker.js`, you should use:
 
 ```js
