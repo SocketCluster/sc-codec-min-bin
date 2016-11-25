@@ -19,7 +19,7 @@ var scCodecMinBin = require('sc-codec-min-bin');
 worker.scServer.setCodecEngine(scCodecMinBin);
 ```
 
-On the client-side, you can either include the 'sc-codec-min-bin' module using
+On the client-side, you can either include the `sc-codec-min-bin` module using
 your favorite bundler such as Browserify or Webpack or you can include the `sc-codec-min-bin.js`
 file using a script tag; this will expose the `scCodecMinBin` object globally.
 To use it, you just need to add it on connect:
