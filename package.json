@@ -1,0 +1,28 @@
+{
+  "name": "sc-codec-min-bin",
+  "version": "1.0.0",
+  "description": "Minimal binary codec for SC based on MessagePack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SocketCluster/sc-codec-min-bin.git"
+  },
+  "keywords": [
+    "socketcluster",
+    "codec",
+    "messagepack",
+    "binary"
+  ],
+  "author": "Jonathan Gros-Dubois",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SocketCluster/sc-codec-min-bin/issues"
+  },
+  "homepage": "https://github.com/SocketCluster/sc-codec-min-bin",
+  "dependencies": {
+    "msgpack-lite": "0.1.26"
+  }
+}
