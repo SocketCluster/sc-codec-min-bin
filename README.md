@@ -7,6 +7,9 @@ On the server, inside `worker.js`, you should use:
 
 ```js
 var scCodecBinMin = require('sc-codec-bin-min');
+
+// ...
+// This needs to go inside the run function - Near the top.
 worker.scServer.setCodecEngine(scCodecBinMin);
 ```
 
