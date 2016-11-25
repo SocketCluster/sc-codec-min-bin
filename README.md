@@ -37,7 +37,7 @@ Note that you need to set it up properly on both the client and server or else i
 
 ## Contributing
 
-To build global script for browser:
+To build the global script for the browser:
 
 ```bash
 browserify -s scCodecMinBin index.js > sc-codec-min-bin.js
