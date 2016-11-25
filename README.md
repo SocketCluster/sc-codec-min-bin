@@ -31,7 +31,7 @@ var socket = socketCluster.connect({
 });
 ```
 
-Note that you need to set it up properly on both the client and server or else it won't work.
+Note that you need to set it up as shown above on both the client and server or else it won't work.
 
 ---
 
