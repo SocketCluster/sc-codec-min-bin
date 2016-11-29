@@ -1,5 +1,5 @@
 # sc-codec-min-bin
-Minimal binary codec for SC based on MessagePack.
+Minimal binary codec for SC based on MessagePack.  
 This codec helps reduce bandwidth usage and is ideal for games and other high-throughput applications.
 
 This module is designed to be hooked up on both the client and server.
