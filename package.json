@@ -1,6 +1,6 @@
 {
   "name": "sc-codec-min-bin",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Minimal binary codec for SC based on MessagePack",
   "main": "index.js",
   "scripts": {
