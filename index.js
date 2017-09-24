@@ -41,7 +41,7 @@ var decompressPublishPacket = function (object) {
   delete object.p;
 };
 
-compressEmitPacket = function (object) {
+var compressEmitPacket = function (object) {
   if (object.event == null) {
     return;
   }
@@ -55,7 +55,7 @@ compressEmitPacket = function (object) {
   delete object.cid;
 };
 
-decompressEmitPacket = function (object) {
+var decompressEmitPacket = function (object) {
   if (object.e == null) {
     return;
   }
@@ -68,7 +68,7 @@ decompressEmitPacket = function (object) {
   delete object.e;
 };
 
-compressResponsePacket = function (object) {
+var compressResponsePacket = function (object) {
   if (object.rid == null) {
     return;
   }
@@ -80,7 +80,7 @@ compressResponsePacket = function (object) {
   delete object.data;
 };
 
-decompressResponsePacket = function (object) {
+var decompressResponsePacket = function (object) {
   if (object.r == null) {
     return;
   }
@@ -101,12 +101,30 @@ var clonePacket = function (object) {
   return clone;
 };
 
+var compressSinglePacket = function (object) {
+  object = clonePacket(object);
+  compressPublishPacket(object);
+  compressEmitPacket(object);
+  compressResponsePacket(object);
+  return object;
+};
+
+var decompressSinglePacket = function (object) {
+  decompressEmitPacket(object);
+  decompressPublishPacket(object);
+  decompressResponsePacket(object);
+};
+
 module.exports.encode = function (object) {
-  if (object && (object.event != null || object.rid != null)) {
-    object = clonePacket(object);
-    compressPublishPacket(object);
-    compressEmitPacket(object);
-    compressResponsePacket(object);
+  if (object) {
+    if (Array.isArray(object)) {
+      var len = object.length;
+      for (var i = 0; i < len; i++) {
+        object[i] = compressSinglePacket(object[i]);
+      }
+    } else if (object.event != null || object.rid != null) {
+      object = compressSinglePacket(object);
+    }
   }
   return msgpack.encode(object, options);
 };
@@ -114,8 +132,13 @@ module.exports.encode = function (object) {
 module.exports.decode = function (str) {
   str = new Uint8Array(str);
   var object = msgpack.decode(str, options);
-  decompressEmitPacket(object);
-  decompressPublishPacket(object);
-  decompressResponsePacket(object);
+  if (Array.isArray(object)) {
+    var len = object.length;
+    for (var i = 0; i < len; i++) {
+      decompressSinglePacket(object[i]);
+    }
+  } else {
+    decompressSinglePacket(object);
+  }
   return object;
 };
